@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>مشغل القنوات الجديدة</title>
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+  <style>
+    body {
+      background-color: #111;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #222;
+      padding: 20px;
+      text-align: center;
+      font-size: 28px;
+      font-weight: bold;
+      color: #00e0ff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+    }
+    #video-container {
+      width: 90%;
+      max-width: 800px;
+      margin: 20px auto;
+      background-color: #000;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 0 15px rgba(255,255,255,0.1);
+    }
+    video {
+      width: 100%;
+      height: auto;
+    }
+    .channel-block {
+      width: 90%;
+      max-width: 800px;
+      margin: 30px auto;
+      background-color: #1a1a1a;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(255,255,255,0.05);
+    }
+    .channel-title {
+      font-size: 22px;
+      margin-bottom: 10px;
+      color: #00e0ff;
+      text-align: center;
+    }
+    .quality-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .quality-buttons button {
+      background: #333;
+      color: #fff;
+      border: none;
+      padding: 10px 16px;
+      font-size: 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .quality-buttons button:hover {
+      background-color: #00e0ff;
+      color: #000;
+    }
+  </style>
+</head>
+<body>
+
+<header>MAHER TV</header>
+
+<div id="video-container">
+  <video id="video" controls></video>
+</div>
+
+<script>
+  function playStream(url) {
+    const video = document.getElementById('video');
+    if (Hls.isSupported()) {
+      const hls = new Hls();
+      hls.loadSource(url);
+      hls.attachMedia(video);
+      hls.on(Hls.Events.MANIFEST_PARSED, function () {
+        video.play();
+      });
+    } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+      video.src = url;
+      video.addEventListener('loadedmetadata', function () {
+        video.play();
+      });
+    }
+  }
+</script>
+
+<div class="channel-block">
+  <div class="channel-title">القناة الأولى</div>
+  <div class="quality-buttons">
+    <button onclick="playStream('https://stream.veo.buzz:6050/sport/ch1/adaptive.m3u8')">Auto</button>
+    <button onclick="playStream('https://stream.veo.buzz:6050/sport/ch1/ch1_240.m3u8')">SD</button>
+    <button onclick="playStream('https://stream.veo.buzz:6050/sport/ch1/ch1_360.m3u8')">HD</button>
+    <button onclick="playStream('https://stream.veo.buzz:6050/sport/ch1/ch1_720.m3u8')">FHD</button>
+    <button onclick="playStream('https://stream.veo.buzz:6050/sport/ch1/ch1_1080.m3u8')">4K</button>
+  </div>
+</div>
+
+<div class="channel-block">
+  <div class="channel-title">القناة الثانية</div>
+  <div class="quality-buttons">
+    <button onclick="playStream('https://stream.veo.buzz:6050/sport/ch2/adaptive.m3u8')">Auto</button>
+    <button onclick="playStream('https://stream.veo.buzz:6050/sport/ch2/ch2_240.m3u8')">SD</button>
+    <button onclick="playStream('https://stream.veo.buzz:6050/sport/ch2/ch2_360.m3u8')">HD</button>
+    <button onclick="playStream('https://stream.veo.buzz:6050/sport/ch2/ch2_720.m3u8')">FHD</button>
+    <button onclick="playStream('https://stream.veo.buzz:6050/sport/ch2/ch2_1080.m3u8')">4K</button>
+  </div>
+</div>
+
+<div class="channel-block">
+  <div class="channel-title">القناة الثالثة</div>
+  <div class="quality-buttons">
+    <button onclick="playStream('https://stream.veo.buzz:6050/sport/ch3/adaptive.m3u8')">Auto</button>
+    <button onclick="playStream('https://stream.veo.buzz:6050/sport/ch3/ch3_240.m3u8')">SD</button>
+    <button onclick="playStream('https://stream.veo.buzz:6050/sport/ch3/ch3_360.m3u8')">HD</button>
+    <button onclick="playStream('https://stream.veo.buzz:6050/sport/ch3/ch3_720.m3u8')">FHD</button>
+    <button onclick="playStream('https://stream.veo.buzz:6050/sport/ch3/ch3_1080.m3u8')">4K</button>
+  </div>
+</div>
+
+<div class="channel-block">
+  <div class="channel-title">القناة الرابعة</div>
+  <div class="quality-buttons">
+    <button onclick="playStream('https://stream.veo.buzz:6050/sport/ch4/adaptive.m3u8')">Auto</button>
+    <button onclick="playStream('https://stream.veo.buzz:6050/sport/ch4/ch4_240.m3u8')">SD</button>
+    <button onclick="playStream('https://stream.veo.buzz:6050/sport/ch4/ch4_360.m3u8')">HD</button>
+    <button onclick="playStream('https://stream.veo.buzz:6050/sport/ch4/ch4_720.m3u8')">FHD</button>
+    <button onclick="playStream('https://stream.veo.buzz:6050/sport/ch4/ch4_1080.m3u8')">4K</button>
+  </div>
+</div>
+
+<div class="channel-block">
+  <div class="channel-title">القناة الخامسة</div>
+  <div class="quality-buttons">
+    <button onclick="playStream('https://stream.veo.buzz:6050/sport/ch5/adaptive.m3u8')">Auto</button>
+    <button onclick="playStream('https://stream.veo.buzz:6050/sport/ch5/ch5_240.m3u8')">SD</button>
+    <button onclick="playStream('https://stream.veo.buzz:6050/sport/ch5/ch5_360.m3u8')">HD</button>
+    <button onclick="playStream('https://stream.veo.buzz:6050/sport/ch5/ch5_720.m3u8')">FHD</button>
+    <button onclick="playStream('https://stream.veo.buzz:6050/sport/ch5/ch5_1080.m3u8')">4K</button>
+  </div>
+</div>
+
+<div class="channel-block">
+  <div class="channel-title">القناة السادسة</div>
+  <div class="quality-buttons">
+    <button onclick="playStream('https://stream.veo.buzz:6050/sport/ch6/adaptive.m3u8')">Auto</button>
+    <button onclick="playStream('https://stream.veo.buzz:6050/sport/ch6/ch6_240.m3u8')">SD</button>
+    <button onclick="playStream('https://stream.veo.buzz:6050/sport/ch6/ch6_360.m3u8')">HD</button>
+    <button onclick="playStream('https://stream.veo.buzz:6050/sport/ch6/ch6_720.m3u8')">FHD</button>
+    <button onclick="playStream('https://stream.veo.buzz:6050/sport/ch6/ch6_1080.m3u8')">4K</button>
+  </div>
+</div>
+
+<div class="channel-block">
+  <div class="channel-title">القناة السابعة</div>
+  <div class="quality-buttons">
+    <button onclick="playStream('https://stream.veo.buzz:6050/sport/ch7/adaptive.m3u8')">Auto</button>
+    <button onclick="playStream('https://stream.veo.buzz:6050/sport/ch7/ch7_240.m3u8')">SD</button>
+    <button onclick="playStream('https://stream.veo.buzz:6050/sport/ch7/ch7_360.m3u8')">HD</button>
+    <button onclick="playStream('https://stream.veo.buzz:6050/sport/ch7/ch7_720.m3u8')">FHD</button>
+    <button onclick="playStream('https://stream.veo.buzz:6050/sport/ch7/ch7_1080.m3u8')">4K</button>
+  </div>
+</div>
+
+<div class="channel-block">
+  <div class="channel-title">القناة الثامنة</div>
+  <div class="quality-buttons">
+    <button onclick="playStream('https://stream.veo.buzz:6050/sport/ch8/adaptive.m3u8')">Auto</button>
+    <button onclick="playStream('https://stream.veo.buzz:6050/sport/ch8/ch8_240.m3u8')">SD</button>
+    <button onclick="playStream('https://stream.veo.buzz:6050/sport/ch8/ch8_360.m3u8')">HD</button>
+    <button onclick="playStream('https://stream.veo.buzz:6050/sport/ch8/ch8_720.m3u8')">FHD</button>
+    <button onclick="playStream('https://stream.veo.buzz:6050/sport/ch8/ch8_1080.m3u8')">4K</button>
+  </div>
+</div>
+
+<div class="channel-block">
+  <div class="channel-title">القناة التاسعة</div>
+  <div class="quality-buttons">
+    <button onclick="playStream('https://stream.veo.buzz:6050/sport/ch9/adaptive.m3u8')">Auto</button>
+    <button onclick="playStream('https://stream.veo.buzz:6050/sport/ch9/ch9_240.m3u8')">SD</button>
+    <button onclick="playStream('https://stream.veo.buzz:6050/sport/ch9/ch9_360.m3u8')">HD</button>
+    <button onclick="playStream('https://stream.veo.buzz:6050/sport/ch9/ch9_720.m3u8')">FHD</button>
+    <button onclick="playStream('https://stream.veo.buzz:6050/sport/ch9/ch9_1080.m3u8')">4K</button>
+  </div>
+</div>
+
+<div class="channel-block">
+  <div class="channel-title">القناة العاشرة</div>
+  <div class="quality-buttons">
+    <button onclick="playStream('https://stream.veo.buzz:6050/sport/ch10/adaptive.m3u8')">Auto</button>
+    <button onclick="playStream('https://stream.veo.buzz:6050/sport/ch10/ch10_240.m3u8')">SD</button>
+    <button onclick="playStream('https://stream.veo.buzz:6050/sport/ch10/ch10_360.m3u8')">HD</button>
+    <button onclick="playStream('https://stream.veo.buzz:6050/sport/ch10/ch10_720.m3u8')">FHD</button>
+    <button onclick="playStream('https://stream.veo.buzz:6050/sport/ch10/ch10_1080.m3u8')">4K</button>
+  </div>
+</div>
+
+</body>
+</html>
